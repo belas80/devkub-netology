@@ -124,6 +124,50 @@ kubernetes   ClusterIP      10.96.0.1        <none>        443/TCP          62m
 
 ## Задача 3: Установить kubectl  
 
+Версия:  
+```bash
+~ % kubectl version --short
+Flag --short has been deprecated, and will be removed in the future. The --short output will become the default.
+Client Version: v1.24.1
+Kustomize Version: v4.5.4
+Server Version: v1.23.3
+```
+Настройки подключения к Minikube:  
+```bash
+~ % kubectl config view 
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /home/ubuntu/.minikube/ca.crt
+    extensions:
+    - extension:
+        last-update: Sun, 05 Jun 2022 13:32:01 UTC
+        provider: minikube.sigs.k8s.io
+        version: v1.25.2
+      name: cluster_info
+    server: https://192.168.49.2:8443
+  name: minikube
+contexts:
+- context:
+    cluster: minikube
+    extensions:
+    - extension:
+        last-update: Sun, 05 Jun 2022 13:32:01 UTC
+        provider: minikube.sigs.k8s.io
+        version: v1.25.2
+      name: context_info
+    namespace: default
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+    client-certificate: /home/ubuntu/.minikube/profiles/minikube/client.crt
+    client-key: /home/ubuntu/.minikube/profiles/minikube/client.key
+```
 Port-forward до кластера:  
 ```bash
 ~ % kubectl port-forward --address 0.0.0.0 services/hello-node 8080
