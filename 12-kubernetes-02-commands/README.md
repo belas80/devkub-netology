@@ -110,7 +110,7 @@ NAME                     READY   STATUS    RESTARTS   AGE
 nginx-7c658794b9-b2f2b   1/1     Running   0          28m
 nginx-7c658794b9-pwgmw   1/1     Running   0          28m
 ```
-Пользователь `user1` может просматривать ресурсы только в неймспейса `app-namespace`.  
+Пользователь `user1` может просматривать ресурсы только в неймспейсе `app-namespace`.  
 Ну и еще несколько проверок на чтение логов и созадние ресурсов в конетексте этого пользователя:  
 ```bash
 ~$ kubectl config use-context user1-context 
@@ -153,7 +153,7 @@ Events:
   Normal  Created    36m   kubelet            Created container nginx
   Normal  Started    36m   kubelet            Started container nginx
 
-:~$ kubectl create deployment nginx2 --image nginx:latest
+~$ kubectl create deployment nginx2 --image nginx:latest
 error: failed to create deployment: deployments.apps is forbidden: User "user1" cannot create resource "deployments" in API group "apps" in the namespace "app-namespace"
 
 ~$ kubectl edit deployments.apps nginx 
