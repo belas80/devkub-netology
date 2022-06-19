@@ -9,7 +9,6 @@ spec:
       app: cache
   policyTypes:
     - Ingress
-    - Egress
   ingress:
     - from:
       - podSelector:
