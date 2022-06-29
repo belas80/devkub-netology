@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend
+  name: frontend
+  namespace: stage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - image: belas80/frontend
+          imagePullPolicy: IfNotPresent
+          name: frontend
+          ports:
+            - containerPort: 80
+        - image: belas80/backend
+          imagePullPolicy: IfNotPresent
+          name: backend
+          ports:
+            - containerPort: 9000
+      terminationGracePeriodSeconds: 30
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: stage
+spec:
+  ports:
+    - name: web8000
+      port: 8000
+      targetPort: 80
+      nodePort: 30080
+    - name: web9000
+      port: 9000
+      nodePort: 30081
+  selector:
+    app: frontend
+  type: NodePort
