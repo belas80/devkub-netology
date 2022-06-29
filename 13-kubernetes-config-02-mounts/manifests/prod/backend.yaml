@@ -21,6 +21,13 @@ spec:
           name: backend
           ports:
             - containerPort: 9000
+          volumeMounts:
+            - mountPath: "/static"
+              name: my-vol
+      volumes:
+        - name: my-vol
+          persistentVolumeClaim:
+            claimName: my-volume-claim
       terminationGracePeriodSeconds: 30
 
 ---

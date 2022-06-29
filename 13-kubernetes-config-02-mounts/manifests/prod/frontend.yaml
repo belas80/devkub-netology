@@ -21,6 +21,13 @@ spec:
           name: frontend
           ports:
             - containerPort: 80
+          volumeMounts:
+            - mountPath: "/static"
+              name: my-vol
+      volumes:
+        - name: my-vol
+          persistentVolumeClaim:
+            claimName: my-volume-claim
       terminationGracePeriodSeconds: 30
 
 ---

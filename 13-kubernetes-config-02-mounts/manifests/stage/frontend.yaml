@@ -21,11 +21,20 @@ spec:
           name: frontend
           ports:
             - containerPort: 80
+          volumeMounts:
+            - mountPath: "/static-f"
+              name: my-vol
         - image: belas80/backend
           imagePullPolicy: IfNotPresent
           name: backend
           ports:
             - containerPort: 9000
+          volumeMounts:
+            - mountPath: "/static-b"
+              name: my-vol
+      volumes:
+        - name: my-vol
+          emptyDir: {}
       terminationGracePeriodSeconds: 30
 
 ---
