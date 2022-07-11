@@ -199,6 +199,7 @@ spec:
   NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
   my-app          app1            1               2022-07-12 03:13:38.201287 +0500 +05    deployed        my-app-0.1.2                    1.16.1     
   nfs-server      prod            1               2022-06-29 23:37:01.452847 +0500 +05    deployed        nfs-server-provisioner-1.1.3    2.3.0
+  
   % kubectl get deploy,sts,svc -n app1
   NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
   deployment.apps/backend    1/1     1            1           3m52s
