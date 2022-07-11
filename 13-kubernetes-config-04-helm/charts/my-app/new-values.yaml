@@ -1,0 +1,10 @@
+frontend:
+  appName: frontend2
+  nodePort: 30180
+
+backend:
+  appName: backend2
+  nodePort: 30181
+
+db:
+  appName: db2
