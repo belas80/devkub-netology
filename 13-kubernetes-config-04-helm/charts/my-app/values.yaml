@@ -1,0 +1,49 @@
+namespace: app1
+
+resources:
+   limits:
+     cpu: 200m
+     memory: 256Mi
+   requests:
+     cpu: 100m
+     memory: 128Mi
+
+frontend:
+  replicaCount: 1
+  image:
+    repository: belas80/frontend
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "latest"
+  appPort: 80
+  svcPort: 8000
+  appName: frontend
+  nodePort: 30080
+
+backend:
+  replicaCount: 1
+  image:
+    repository: belas80/backend
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "latest"
+  appPort: 9000
+  appName: backend
+  nodePort: 30081
+
+db:
+  replicaCount: 1
+  image:
+    repository: postgres
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "13-alpine"
+  appPort: 5432
+  appName: db
+  pgPass: postgres
+  pgUser: postgres
+  pgDB: news
+  resources:
+    limits:
+      cpu: 400m
+      memory: 512Mi
+    requests:
+      cpu: 200m
+      memory: 256Mi

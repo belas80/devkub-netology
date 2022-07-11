@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.backend.appName }}
+  namespace: {{ .Values.namespace }}
+spec:
+  ports:
+    - name: web9000
+      port: {{ .Values.backend.appPort }}
+      nodePort: {{ .Values.backend.nodePort }}
+  selector:
+    app: {{ .Values.backend.appName }}
+  type: NodePort

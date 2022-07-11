@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.frontend.appName }}
+  namespace: {{ .Values.namespace }}
+spec:
+  ports:
+    - name: web8000
+      port: {{ .Values.frontend.svcPort }}
+      targetPort: {{ .Values.frontend.appPort }}
+      nodePort: {{ .Values.frontend.nodePort }}
+  selector:
+    app: {{ .Values.frontend.appName }}
+  type: NodePort
